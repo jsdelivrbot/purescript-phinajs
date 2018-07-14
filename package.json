@@ -1,0 +1,27 @@
+{
+  "name": "purescript-phinajs",
+  "version": "0.0.1",
+  "description": "PureScript bindings for phina.js",
+  "main": "index.js",
+  "scripts": {
+    "bower": "bower",
+    "pulp": "pulp",
+    "test": "pulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hansel-no-kioku/purescript-phinajs.git"
+  },
+  "author": "hansel-no-kioku",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hansel-no-kioku/purescript-phinajs/issues"
+  },
+  "homepage": "https://github.com/hansel-no-kioku/purescript-phinajs#readme",
+  "devDependencies": {
+    "bower": "^1.8.4",
+    "eslint": "^5.1.0",
+    "pulp": "^12.3.0",
+    "purescript": "^0.12.0"
+  }
+}
