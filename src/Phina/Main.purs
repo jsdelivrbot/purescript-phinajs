@@ -30,7 +30,7 @@ import Phina.Unsafe (unsafeNew, unsafeSetProp, unsafeSetProps)
 --
 
 data GameScenes = SceneList (Array SceneEntry)
-                | MainScene (SetupScene DisplayScene () (score ∷ Int))
+                | MainScene (SetupScene DisplayScene () (score ∷ String))
 
 newGame
    ∷ ∀ a
@@ -72,7 +72,7 @@ instance labeledSceneTitleScene
     sceneHandle _ = titleScene
 
 instance labeledSceneResultScene
-  ∷ LabeledScene ResultScene "result" ResultScene (score ∷ Int) ()
+  ∷ LabeledScene ResultScene "result" ResultScene (score ∷ String) ()
   where
     sceneHandle _ = resultScene
 

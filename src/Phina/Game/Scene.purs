@@ -105,9 +105,9 @@ instance interactiveResultScene ∷ Interactive ResultScene
 instance isSceneResultScene ∷ IsScene ResultScene where
   className _ = "ResultScene"
 
-instance isGameSceneResultScene ∷ IsGameScene ResultScene (score ∷ Int) ()
+instance isGameSceneResultScene ∷ IsGameScene ResultScene (score ∷ String) ()
 
-resultScene ∷ SceneHandle ResultScene (score ∷ Int) ()
+resultScene ∷ SceneHandle ResultScene (score ∷ String) ()
 resultScene = toSceneHandle' setupDefault
 
 --
