@@ -1,14 +1,32 @@
 {
   "name": "purescript-phinajs",
+  "description": "PureScript bindings for phina.js",
+  "keywords": [
+    "purescript",
+    "phinajs",
+    "game-engine",
+    "bindings"
+  ],
+  "authors": [
+    "hansel-no-kioku"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hansel-no-kioku/purescript-phinajs.git"
+  },
+  "homepage": "https://github.com/hansel-no-kioku/purescript-phinajs#readme",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "output"
+    "output",
+    "samples",
+    "test",
+    "package*.json"
   ],
   "dependencies": {
     "purescript-prelude": "^4.0.1",
-    "purescript-console": "^4.1.0",
     "purescript-effect": "^2.0.0",
     "purescript-unsafe-coerce": "^4.0.0",
     "purescript-typelevel-prelude": "^3.0.0",
@@ -24,6 +42,8 @@
     "purescript-arrays": "^5.0.0"
   },
   "devDependencies": {
+    "purescript-console": "^4.1.0",
     "purescript-psci-support": "^4.0.0"
-  }
+  },
+  "private": false
 }
