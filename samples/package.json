@@ -1,0 +1,16 @@
+{
+  "name": "purescript-phinajs-samples",
+  "version": "0.0.1",
+  "scripts": {
+    "bower": "bower",
+    "pulp": "pulp",
+    "build": "run-s build:*",
+    "build:01": "pulp browserify --dependency-path ../bower_components -I ../src -O --src-path 01-hello-world/src -m Main01 -t 01-hello-world/js/app.js"
+  },
+  "dependencies": {
+    "bower": "^1.8.4",
+    "npm-run-all": "^4.1.3",
+    "pulp": "^12.3.0",
+    "purescript": "^0.12.0"
+  }
+}
