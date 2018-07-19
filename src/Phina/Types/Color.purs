@@ -22,10 +22,10 @@ color ∷ String → Color
 color = unsafeCoerce
 
 colorToString ∷ Color → Maybe String
-colorToString c = runFn3 nullableColor c Nothing Just
+colorToString c = runFn3 nullableColor Nothing Just c
 
 instance showColor ∷ Show Color where
   show = maybe "null" show <<< colorToString
 
 -- | Nullable witch allows false
-foreign import nullableColor ∷ ∀ a. Fn3 Color a (String → a) a
+foreign import nullableColor ∷ ∀ a. Fn3 a (String → a) Color a
