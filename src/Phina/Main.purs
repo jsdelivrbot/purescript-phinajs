@@ -1,7 +1,9 @@
 -- phina.main & phina.game.GameApp
 
 module Phina.Main
-  ( GameScenes(..)
+  ( StartScene(..)
+  , SetupMainScene
+  , GameScenes(..)
   , newGame
   , runGame
   , class LabeledScene
@@ -13,7 +15,7 @@ module Phina.Main
 import Prelude
 
 import Data.Array (head)
-import Data.Maybe (Maybe(..))
+import Data.Maybe (Maybe(..), maybe')
 import Data.Traversable (traverse)
 import Effect (Effect)
 import Effect.Uncurried (EffectFn1, EffectFn2, runEffectFn1, runEffectFn2)
@@ -29,8 +31,12 @@ import Phina.Unsafe (unsafeNew, unsafeSetProp, unsafeSetProps)
 
 --
 
+data StartScene = Splash | Title | Main | Result
+
+type SetupMainScene = SetupScene DisplayScene () (score ∷ String)
+
 data GameScenes = SceneList (Array SceneEntry)
-                | MainScene (SetupScene DisplayScene () (score ∷ String))
+                | SceneListDefault StartScene SetupMainScene
 
 newGame
    ∷ ∀ a
@@ -38,16 +44,20 @@ newGame
   ⇒ Record a
   → GameScenes
   → Effect GameAppReady
-newGame a s = do
-  config ← unsafeSetProps a {}
-  t ← entryScenes s
-  config' ← case head t of
-    Just f →
-      let startLabel = (unsafeCoerce f ∷ {label ∷ String}).label
-      in  unsafeSetProp "startLabel" startLabel config
-      >>= unsafeSetProp "scenes" t
-    Nothing → pure config
-  unsafeNew "game" "GameApp" config'
+newGame params scenes = do
+  transList ← entryScenes scenes
+  config ← makeConfig params transList {}
+  unsafeNew "game" "GameApp" config
+  where
+    makeConfig p transList  = unsafeSetProps p
+                          >=> setScenes transList
+                          >=> setStartL transList
+    setScenes tl config = maybe'  (\_ → pure config)
+                                  (\t → unsafeSetProp "scenes" t config)
+                                  tl.list
+    setStartL tl config = maybe'  (\_ → pure config)
+                                  (\l → unsafeSetProp "startLabel" l config)
+                                  tl.startLabel
 
 runGame ∷ GameAppReady → Effect Unit
 runGame = runEffectFn1 _runGame
@@ -111,9 +121,31 @@ sceneEntry _ _ = unsafeCoerce
 
 foreign import data SceneTrans ∷ Type
 
-entryScenes ∷ GameScenes → Effect (Array SceneTrans)
-entryScenes (SceneList l) = traverse (runEffectFn2 entryScene exit) l
-entryScenes (MainScene s) = const [] <$> runEffectFn2 entryMainScene exit s
+type SceneTransList =
+  { list ∷ Maybe (Array SceneTrans)
+  , startLabel ∷ Maybe String
+  }
+
+entryScenes ∷ GameScenes → Effect SceneTransList
+entryScenes (SceneList list) = entrySceneList list
+entryScenes (SceneListDefault s setup) = entrySceneListDefault s setup
+
+entrySceneList ∷ Array SceneEntry → Effect SceneTransList
+entrySceneList list = do
+  t ← traverse (runEffectFn2 entryScene exit) list
+  pure {list: Just t, startLabel: getLabel <$> head t}
+  where
+    getLabel scene = (unsafeCoerce scene ∷ {label ∷ String}).label
+
+entrySceneListDefault ∷ StartScene → SetupMainScene → Effect SceneTransList
+entrySceneListDefault startScene setup = do
+  runEffectFn2 entryMainScene exit setup
+  pure {list: Nothing, startLabel: Just $ startLabel startScene}
+  where
+    startLabel Splash = "splash"
+    startLabel Title = "title"
+    startLabel Main = "main"
+    startLabel Result = "result"
 
 foreign import entryScene ∷ ∀ e. EffectFn2 e SceneEntry SceneTrans
 foreign import entryMainScene ∷ ∀ e s. EffectFn2 e s Unit

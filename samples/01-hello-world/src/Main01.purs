@@ -9,7 +9,7 @@ import Phina as P
 
 main :: Effect Unit
 main = do
-  let scenes = P.MainScene setuptScene
+  let scenes = P.SceneListDefault P.Main setuptScene
   game ← P.newGame {title: "Hello World"} scenes
   P.runGame game
 
