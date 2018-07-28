@@ -10,6 +10,7 @@ module Phina.Types.Async
   , runAsync'
   , runAsyncB'
   , liftBuilder
+  , foreverAsync
   ) where
 
 import Prelude
@@ -17,7 +18,7 @@ import Prelude
 import Control.Alt (class Alt)
 import Control.Lazy (class Lazy)
 import Control.Monad.Error.Class (class MonadError, class MonadThrow)
-import Control.Monad.Rec.Class (class MonadRec)
+import Control.Monad.Rec.Class (class MonadRec, forever)
 import Control.Monad.State (class MonadState, StateT(..), evalStateT, execStateT, lift, mapStateT)
 import Control.Plus (class Plus)
 import Data.Either (Either(..))
@@ -29,7 +30,7 @@ import Effect.Class (class MonadEffect, liftEffect)
 import Effect.Exception (Error, catchException)
 
 import Phina.Types.Builder (Builder)
-import Phina.Types.Monad.Builder (class MonadBuilder, eval, update)
+import Phina.Types.Monad.Builder (class MonadBuilder, build, eval, update)
 
 --
 
@@ -107,3 +108,6 @@ runAsyncB' f = update <<< runAsync' f
 
 liftBuilder ∷ ∀ a. Builder a ~> Async a
 liftBuilder = wrap <<< mapStateT liftEffect <<< unwrap
+
+foreverAsync ∷ ∀ a b. Async a b → Async a Unit
+foreverAsync as = Async $ StateT \a → Tuple unit a <$ (forever $ build as a)
