@@ -2,7 +2,7 @@
 module Phina.App.Interactive.Builder
   ( onPointOverB
   , onPointOutB
-  , oonPointStartB
+  , onPointStartB
   , onPointEndB
   , onPointStayB
   , onPointMoveB
@@ -31,8 +31,8 @@ onPointOverB = update <<< onPointOver
 onPointOutB ∷ OnPoint
 onPointOutB = update <<< onPointOut
 
-oonPointStartB ∷ OnPoint
-oonPointStartB = update <<< onPointStart
+onPointStartB ∷ OnPoint
+onPointStartB = update <<< onPointStart
 
 onPointEndB ∷ OnPoint
 onPointEndB = update <<< onPointEnd
