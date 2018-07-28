@@ -31,6 +31,7 @@ import Prim.Row (class Union)
 import Type.Prelude (Proxy(..))
 import Unsafe.Coerce (unsafeCoerce)
 
+import Phina.Accessory.Tweener (class Tweenable)
 import Phina.App.Element (class Container, class IsElement, ElementProps)
 import Phina.App.Interactive (class Interactive, InteractiveProps)
 import Phina.Game.GameApp (GameApp)
@@ -200,6 +201,7 @@ instance isElementDisplayScene ∷ IsElement DisplayScene
 instance containerDisplayScene ∷ Container DisplayScene
 instance hasGridDisplayScene ∷ HasGrid DisplayScene
 instance interactiveDisplayScene ∷ Interactive DisplayScene
+instance tweenableDisplayScene ∷ Tweenable DisplayScene
 
 instance isSceneDisplayScene ∷ IsScene DisplayScene where
   className _ = "DisplayScene"

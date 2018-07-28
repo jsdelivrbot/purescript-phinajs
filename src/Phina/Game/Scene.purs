@@ -25,6 +25,7 @@ import Prelude
 
 import Unsafe.Coerce (unsafeCoerce)
 
+import Phina.Accessory.Tweener (class Tweenable)
 import Phina.App.Element (class Container, class IsElement)
 import Phina.App.Interactive (class Interactive)
 import Phina.Asset.AssetLoader (Assets)
@@ -57,6 +58,7 @@ instance isElementSplashScene ∷ IsElement SplashScene
 instance containerSplashScene ∷ Container SplashScene
 instance hasGridSplashScene ∷ HasGrid SplashScene
 instance interactiveSplashScene ∷ Interactive SplashScene
+instance tweenableSplashScene ∷ Tweenable SplashScene
 
 instance isSceneSplashScene ∷ IsScene SplashScene where
   className _ = "SplashScene"
@@ -79,6 +81,7 @@ instance isElementTitleScene ∷ IsElement TitleScene
 instance containerTitleScene ∷ Container TitleScene
 instance hasGridTitleScene ∷ HasGrid TitleScene
 instance interactiveTitleScene ∷ Interactive TitleScene
+instance tweenableTitleScene ∷ Tweenable TitleScene
 
 instance isSceneTitleScene ∷ IsScene TitleScene where
   className _ = "TitleScene"
@@ -101,6 +104,7 @@ instance isElementResultScene ∷ IsElement ResultScene
 instance containerResultScene ∷ Container ResultScene
 instance hasGridResultScene ∷ HasGrid ResultScene
 instance interactiveResultScene ∷ Interactive ResultScene
+instance tweenableResultScene ∷ Tweenable ResultScene
 
 instance isSceneResultScene ∷ IsScene ResultScene where
   className _ = "ResultScene"
@@ -123,6 +127,7 @@ instance isElementLoadingScene ∷ IsElement LoadingScene
 instance containerLoadingScene ∷ Container LoadingScene
 instance hasGridLoadingScene ∷ HasGrid LoadingScene
 instance interactiveLoadingScene ∷ Interactive LoadingScene
+instance tweenableLoadingScene ∷ Tweenable LoadingScene
 
 instance isSceneLoadingScene ∷ IsScene LoadingScene where
   className _ = "LoadingScene"
@@ -145,6 +150,7 @@ instance isElementCountScene ∷ IsElement CountScene
 instance containerCountScene ∷ Container CountScene
 instance hasGridCountScene ∷ HasGrid CountScene
 instance interactiveCountScene ∷ Interactive CountScene
+instance tweenableCountScene ∷ Tweenable CountScene
 
 instance isSceneCountScene ∷ IsScene CountScene where
   className _ = "CountScene"
@@ -177,6 +183,7 @@ instance isElementPauseScene ∷ IsElement PauseScene
 instance containerPauseScene ∷ Container PauseScene
 instance hasGridPauseScene ∷ HasGrid PauseScene
 instance interactivePauseScene ∷ Interactive PauseScene
+instance tweenablePauseScene ∷ Tweenable PauseScene
 
 instance isScenePauseScene ∷ IsScene PauseScene where
   className _ = "PauseScene"
