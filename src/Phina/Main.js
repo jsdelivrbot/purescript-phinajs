@@ -11,7 +11,7 @@ exports._runGame = function(app) {
 };
 
 exports.entryScene = function(e, s) {
-  var className = 'myScene.' + s.label;
+  var className = getClassName();
   var ref;
   var superClass
     = (ref = phina.display[s.baseClass]) != null ? ref : phina.game[s.baseClass];
@@ -46,3 +46,11 @@ exports.entryMainScene = function(exit, setup) {
 
   return {};
 };
+
+var getClassName = (function() {
+  var index = 0;
+
+  return function() {
+    return 'myScene' + index ++;
+  };
+})();
