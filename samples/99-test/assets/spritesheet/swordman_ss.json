@@ -1,0 +1,20 @@
+{
+  "frame": {
+    "width": 128,
+    "height": 128,
+    "cols": 5,
+    "rows": 1
+  },
+  "animations": {
+    "attackHead": {
+      "frames": [1, 2, 0],
+      "next": null,
+      "frequency": 10
+    },
+    "attackBody": {
+      "frames": [3, 4, 0],
+      "next": null,
+      "frequency": 10
+    }
+  }
+}
