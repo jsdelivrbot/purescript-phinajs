@@ -78,7 +78,7 @@ launchAsync ∷ ∀ a b. Async a b → a → Effect (Fiber b)
 launchAsync b a = launchAff $ evalStateT (unwrap b) a
 
 launchAsync' ∷ ∀ a b. Async a b → a → Effect a
-launchAsync' b a = const a <$> (launchAff_ $ evalStateT (unwrap b) a)
+launchAsync' b a = a <$ (launchAff_ $ evalStateT (unwrap b) a)
 
 launchAsyncB' ∷ ∀ a b. Async a b → Builder a Unit
 launchAsyncB' = update <<< launchAsync'
@@ -97,7 +97,7 @@ runAsync'
   → Async a b
   → a
   → Effect a
-runAsync' f b a = const a <$> (runAff_ f $ evalStateT (unwrap b) a)
+runAsync' f b a = a <$ (runAff_ f $ evalStateT (unwrap b) a)
 
 runAsyncB'
    ∷ ∀ a b

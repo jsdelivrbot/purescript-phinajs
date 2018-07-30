@@ -31,8 +31,8 @@ setupScene _ exit = build do
   addStarShape {x: 800.0, y: 500.0, radius: 400.0, sides: 7.0, fill: color "red", alpha: 0.2}
   x ← getCenterXB
   y ← getSpanYB 12
-  addChildB' $ newLabel { x: x
-                        , y: y
+  addChildB' $ newLabel { x
+                        , y
                         , text: "Press Space Key"
                         , fill: color "white"
                         }
@@ -56,8 +56,8 @@ sampleOverlayScene = toSceneHandle $ \params exit → build do
   liftEffect $ log params.a
   x ← getCenterXB
   y ← getSpanYB 6
-  addChildB' $ newLabel { x: x
-                        , y: y
+  addChildB' $ newLabel { x
+                        , y
                         , text: "Overlay"
                         , fill: color "white"
                         }

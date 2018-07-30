@@ -23,7 +23,7 @@ module Phina.Types.Property
   , (:>)
   ) where
 
-import Prelude (pure, (<<<))
+import Prelude
 
 import Effect (Effect)
 import Effect.Uncurried (EffectFn3, runEffectFn3)

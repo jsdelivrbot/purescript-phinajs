@@ -23,7 +23,7 @@ setPosition ∷ ∀ a. Writable a Position ⇒ Position → a → Effect a
 setPosition = runEffectFn2 _setPosition
 
 setPosition' ∷ ∀ a. Writable a Position ⇒ Number → Number → a → Effect a
-setPosition' x y = runEffectFn2 _setPosition {x: x, y: y}
+setPosition' x y = runEffectFn2 _setPosition {x, y}
 
 getPosition ∷ ∀ a. Readable a Position ⇒ a → Effect Position
 getPosition = pure <<< unsafeCoerce

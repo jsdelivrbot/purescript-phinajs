@@ -119,7 +119,7 @@ fadeIn ∷ ∀ a. Duration → Easing → Tween a
 fadeIn duration easing = update $ runEffectFn3 _fadeIn duration easing
 
 animate ∷ ∀ a. Tweenable a ⇒ Tween a → a → Effect a
-animate tween element = const element <$> (getTweener element >>= build tween)
+animate tween element = (getTweener element >>= build tween) $> element
 
 addTween ∷ ∀ a. Tweenable a ⇒ Tween a → a → Effect (Tweener a)
 addTween tween element = newTweener element >>= build tween

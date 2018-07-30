@@ -46,9 +46,9 @@ sampleMenuScene = toSceneHandle $ \_ exit → build do
   x1 ← getSpanXB 4
   x2 ← getSpanXB 8
   x3 ← getSpanXB 12
-  addMenuButton 1 {x: x1, y: y, fill: color "red"} exit
-  addMenuButton 2 {x: x2, y: y, fill: color "green"} exit
-  addMenuButton 3 {x: x3, y: y, fill: color "blue"} exit
+  addMenuButton 1 {x: x1, y, fill: color "red"} exit
+  addMenuButton 2 {x: x2, y, fill: color "green"} exit
+  addMenuButton 3 {x: x3, y, fill: color "blue"} exit
 
 
 sampleMenuScene2 ∷ SceneHandle DisplayScene (arg ∷ Int) (ret ∷ String)
@@ -60,9 +60,9 @@ sampleMenuScene2 = toSceneHandle $ \param exit → build do
   y1 ← getSpanYB 4
   y2 ← getSpanYB 8
   y3 ← getSpanYB 12
-  addMenuButton (pre "Green") {x: x, y: y1, width: 150.0, fill: color "green"} exit
-  addMenuButton (pre "Blue") {x: x, y: y2, width: 150.0, fill: color "blue"} exit
-  addMenuButton (pre "Red") {x: x, y: y3, width: 150.0, fill: color "red"} exit
+  addMenuButton (pre "Green") {x, y: y1, width: 150.0, fill: color "green"} exit
+  addMenuButton (pre "Blue") {x, y: y2, width: 150.0, fill: color "blue"} exit
+  addMenuButton (pre "Red") {x, y: y3, width: 150.0, fill: color "red"} exit
 
 
 addMenuButton

@@ -37,27 +37,24 @@ setupScene _ exit = build do
 
 addKeys ∷ Builder DisplayScene Unit
 addKeys = update \scene → do
-  _ ← foldM (procRow scene) 0.0 keys
-  pure scene
+  scene <$ foldM (procRow scene) 0.0 keys
   where
     procRow scene ky row = do
-      _ ← foldM (addKey scene ky) 0.0 row
-      pure (ky + 1.0)
+      ky + 1.0 <$ foldM (addKey scene ky) 0.0 row
 
 
 addKey ∷ DisplayScene → Number → Number → String → Effect Number
-addKey scene ky kx key
-    = ( newLabel  { x: x
-                    , y: y
+addKey scene ky kx key = do
+  label ← newLabel { x
+                    , y
                     , fill: color "white"
                     , stroke: color "black"
                     , strokeWidth: 1.0
                     , text: key
                     }
-          >>= setUpdater (keyUpdater scene $ getKeyName key)
-          >>= flip addChild scene
-      )
-      *> pure (kx + 1.0)
+  _ ← setUpdater (keyUpdater scene $ getKeyName key) label
+  _ ← addChild label scene
+  pure $ kx + 1.0
   where
     offset = 128.0
     keySize = 64.0

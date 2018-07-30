@@ -68,7 +68,7 @@ step bench exit scene = do
   num ← read bench.faceCountRef
   if num >= 4096
     then exit {} scene
-    else addMyFaces bench num *> pure scene
+    else addMyFaces bench num $> scene
 
 
 addMyFaces ∷ Bench → Int → Effect Unit
@@ -94,5 +94,4 @@ addLayer s = do
                                 , height: size.height
                                 , originX: 0.0
                                 , originY: 0.0}
-  _ ← addChild element s
-  pure element
+  element <$ addChild element s
