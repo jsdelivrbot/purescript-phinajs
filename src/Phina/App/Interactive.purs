@@ -47,6 +47,7 @@ type PointEvent =
   , interactive ∷   -- phina.app.Interactive
       { app ∷ GameApp
       }
+  , over ∷ Boolean
   }
 
 onPointOver

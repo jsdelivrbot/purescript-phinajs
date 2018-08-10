@@ -70,7 +70,8 @@ addTouchableShape props = do
         where
           x = round e.pointer.x
           y = round e.pointer.y
-          text = event <> " : " <> (show x) <> ", " <> (show y)
+          over = if e.over then "over" else "out"
+          text = event <> " : " <> (show x) <> ", " <> (show y) <> " " <> over
 
 
 addDraggableShape
