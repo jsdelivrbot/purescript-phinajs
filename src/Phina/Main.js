@@ -22,6 +22,8 @@ exports.entryScene = function(e, s) {
     init: function(params) {
       this.superInit(params);
 
+      this['scene params'] = params;
+
       return s.setup(params)(e)(this)();
     }
   });
@@ -39,6 +41,8 @@ exports.entryMainScene = function(exit, setup) {
 
     init: function(params) {
       this.superInit(params);
+
+      this['scene params'] = params;
 
       return setup(params)(exit)(this)();
     }

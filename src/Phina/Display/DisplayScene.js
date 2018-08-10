@@ -32,10 +32,17 @@ exports._popup = function(s, params, scene) {
           callback(r.prevScene.nextArguments)();
         });
 
-        scene.app.pushScene(s.setup(params)(exit)(klass({
-          width: scene.width,
-          height: scene.height
-        }))());
+        var sceneParams = {};
+
+        if (scene['scene params'] != null) {
+          copyProps(scene['scene params'], sceneParams);
+        }
+        copyProps(params, sceneParams);
+
+        var newScene = klass(sceneParams);
+        newScene['scene params'] = sceneParams;
+
+        scene.app.pushScene(s.setup(params)(exit)(newScene)());
 
         return;
       };
@@ -72,4 +79,16 @@ var getClass = function(path) {
     },
     phina.global
   );
+};
+
+var copyProps = function(src, dest) {
+  var own = Object.prototype.hasOwnProperty;
+
+  for (var key in src) {
+    if (own.call(src, key)) {
+      dest[key] = src[key];
+    }
+  }
+
+  return dest;
 };
