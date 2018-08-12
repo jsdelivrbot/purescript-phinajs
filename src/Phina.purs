@@ -30,9 +30,15 @@ module Phina
   , module Phina.Display.Sprite.Builder
   , module Phina.Display.StarShape
   , module Phina.Display.TriangleShape
+  , module Phina.Game.CountScene
   , module Phina.Game.GameApp
   , module Phina.Game.GameApp.Builder
+  , module Phina.Game.LoadingScene
+  , module Phina.Game.PauseScene
   , module Phina.Game.Scene
+  , module Phina.Game.ResultScene
+  , module Phina.Game.SplashScene
+  , module Phina.Game.TitleScene
   , module Phina.Geom.Vector2
   , module Phina.Input.Keyboard
   , module Phina.Main
@@ -87,9 +93,15 @@ import Phina.Display.Sprite (Sprite, getFrameIndex, newSprite, newSprite', playA
 import Phina.Display.Sprite.Builder (getFrameIndexB, playAnimationB, setAnimationB, setFrameIndexB)
 import Phina.Display.StarShape (StarShape, newStarShape, newStarShape')
 import Phina.Display.TriangleShape (TriangleShape, newTriangleShape, newTriangleShape')
+import Phina.Game.CountScene (CountScene, CountSetting, countDown, countList, countScene)
 import Phina.Game.GameApp (class IsGameApp, GameApp, GameAppReady, GameParams, enableStats)
 import Phina.Game.GameApp.Builder (enableStatsB)
-import Phina.Game.Scene (class IsGameScene, CountScene, CountSetting, LoadingScene, PauseScene, ResultScene, SplashScene, TitleScene, countDefault, countDown, countList, countScene, loadingScene, pauseScene, resultScene, splashScene, titleScene, toSceneHandle')
+import Phina.Game.LoadingScene (LoadingScene, loadingScene)
+import Phina.Game.PauseScene (PauseScene, pauseScene)
+import Phina.Game.ResultScene (ResultScene, resultScene)
+import Phina.Game.Scene (class IsGameScene, toSceneHandle')
+import Phina.Game.SplashScene (SplashScene, splashScene)
+import Phina.Game.TitleScene (TitleScene, titleScene)
 import Phina.Geom.Vector2 (Vector2, cross, divVector2, dot, down, flipDivVector2, flipMulVector2, left, mulVector2, newVector2, newVector2fromAngle, randomAllVector2, randomVector2, reflect, reflectHorizontal, reflectVertical, right, rotate, up, zero, (*~), (/~), (~*), (~/))
 import Phina.Input.Keyboard (class HasKeyboard, Key(..), getKey, getKeyDown, getKeyUp)
 import Phina.Main (class LabeledScene, GameScenes(..), SceneEntry, SetupMainScene, StartScene(..), newGame, runGame, sceneEntry, sceneHandle)
