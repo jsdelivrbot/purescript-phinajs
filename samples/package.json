@@ -4,6 +4,7 @@
     "pulp": "pulp",
     "build": "run-s build:*",
     "build:01": "pulp browserify --dependency-path ../bower_components -I ../src -O --src-path 01-hello-world/src -m Main01 -t 01-hello-world/js/app.js",
+    "build:02": "pulp browserify --dependency-path ../bower_components -I ../src -O --src-path 02-game-scenes/src -m Main02 -t 02-game-scenes/js/app.js",
     "build:99": "pulp browserify --dependency-path ../bower_components -I ../src -O --src-path 99-test/src -m Main99 -t 99-test/js/app.js",
     "watch": "pulp -w browserify --dependency-path ../bower_components -I ../src -O --src-path 99-test/src -m Main99 -t 99-test/js/app.js"
   },
