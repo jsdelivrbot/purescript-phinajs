@@ -44,6 +44,9 @@ exports._popup = function(s, params, scene) {
 
         scene.app.pushScene(s.setup(params)(exit)(newScene)());
 
+        // Forced rendering for dirty shapes
+        renderShapes(newScene, scene.app);
+
         return;
       };
 
@@ -91,4 +94,14 @@ var copyProps = function(src, dest) {
   }
 
   return dest;
+};
+
+var renderShapes = function(element, app) {
+  if (element instanceof phina.display.Shape) {
+    element.flare('enterframe', {app: app});
+  }
+
+  element.children && element.children.forEach(function(c) {
+    renderShapes(c, app);
+  });
 };
