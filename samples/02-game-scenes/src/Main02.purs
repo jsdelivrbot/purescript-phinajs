@@ -7,7 +7,6 @@ import Prelude
 import Effect (Effect)
 import Phina (countDown, countList)
 import Phina as P
-import Phina.Types.Async (foreverAsync)
 
 main :: Effect Unit
 main = do
@@ -23,7 +22,7 @@ gameParams =
 
 gameScenes ∷ P.GameScenes
 gameScenes = P.SceneListDefault P.Main $ \_ _ → P.launchAsync'
-  $ foreverAsync do
+  $ P.foreverAsync do
 
     _ ← P.popup P.countScene { count: countList ["Defaults"]
                               , fontSize: 48.0

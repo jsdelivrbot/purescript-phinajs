@@ -106,7 +106,7 @@ import Phina.Geom.Vector2 (Vector2, cross, divVector2, dot, down, flipDivVector2
 import Phina.Input.Keyboard (class HasKeyboard, Key(..), getKey, getKeyDown, getKeyUp)
 import Phina.Main (class LabeledScene, GameScenes(..), SceneEntry, SetupMainScene, StartScene(..), newGame, runGame, sceneEntry, sceneHandle)
 import Phina.Types.Angle (Angle, deg, rad, toDegrees, toRadians, normalize)
-import Phina.Types.Async (Async, launchAsync, launchAsync', launchAsyncB', liftBuilder, makeAsync, makeAsync', runAsync, runAsync', runAsyncB')
+import Phina.Types.Async (Async, foreverAsync, launchAsync, launchAsync', launchAsyncB', liftBuilder, makeAsync, makeAsync', runAsync, runAsync', runAsyncB')
 import Phina.Types.Builder (Builder)
 import Phina.Types.Color (Color, color, colorToString, nullColor)
 import Phina.Types.Duration (Duration, hour, minute, msec, sec, toHour, toMSec, toMinute, toSec)
