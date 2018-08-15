@@ -14,14 +14,15 @@ import Test.Display.Tweener1 as S05
 import Test.Display.Tweener2 as S06
 import Test.Display.DisplayElement as S07
 import Test.Display.FrameAnimation as S08
-import Test.Input.Touch as S09
-import Test.Input.Keyboard as S10
-import Test.Collision.Object2D as S11
-import Test.Scene.Management as S12
-import Test.Scene.Management2 as S13
-import Test.Util.Grid as S14
-import Test.Util.Grid2 as S15
-import Test.Benchmark.Sprite as S16
+import Test.UI.Button as S09
+import Test.Input.Touch as S10
+import Test.Input.Keyboard as S11
+import Test.Collision.Object2D as S12
+import Test.Scene.Management as S13
+import Test.Scene.Management2 as S14
+import Test.Util.Grid as S15
+import Test.Util.Grid2 as S16
+import Test.Benchmark.Sprite as S17
 
 
 sceneList ∷ Array SceneEntry
@@ -43,5 +44,6 @@ sceneList =
   , sceneEntry S13.sceneProxy S14.sceneProxy
   , sceneEntry S14.sceneProxy S15.sceneProxy
   , sceneEntry S15.sceneProxy S16.sceneProxy
-  , sceneEntry S16.sceneProxy T.sceneProxy
+  , sceneEntry S16.sceneProxy S17.sceneProxy
+  , sceneEntry S17.sceneProxy T.sceneProxy
   ]

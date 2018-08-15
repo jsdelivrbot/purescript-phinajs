@@ -57,6 +57,8 @@ module Phina
   , module Phina.Types.Row
   , module Phina.Types.Size
   , module Phina.Types.Size.Builder
+  , module Phina.UI.Button
+  , module Phina.UI.Button.Builder
   , module Phina.Util.EventDispatcher
   , module Phina.Util.EventDispatcher.Builder
   , module Phina.Util.Grid
@@ -120,6 +122,8 @@ import Phina.Types.Property.Builder (getPropB, getPropsB, modifyPropB, setParams
 import Phina.Types.Row (class SubRow)
 import Phina.Types.Size (Size, SizeProps, getSize, setSize)
 import Phina.Types.Size.Builder (getSizeB, setSizeB)
+import Phina.UI.Button (Button, newButton, newButton', onPush)
+import Phina.UI.Button.Builder (onPushB)
 import Phina.Util.EventDispatcher (class Event, event, class EventDispatcher, flare, on, on')
 import Phina.Util.EventDispatcher.Builder (flareB, onB, onB')
 import Phina.Util.Grid (class HasGrid, Grid, getCenter, getCenterPos, getCenterX, getCenterY, getGridX, getGridY, getSpan, getSpanPos, getSpanX, getSpanY, getUnit, getUnitX, getUnitY, newGrid, setGridX, setGridY, toProps)
