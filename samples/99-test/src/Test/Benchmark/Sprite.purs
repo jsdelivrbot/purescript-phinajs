@@ -9,7 +9,7 @@ import Prelude
 
 import Effect (Effect, forE)
 import Effect.Ref (Ref, new, read, write)
-import Phina (class LabeledScene, DisplayElement, DisplayScene, Label, SetupScene, addChild, addTween, call, color, getSize, newDisplayElement, newLabel, onPointStart, play, sec, setLoop, setProps, setText, stop, toSceneHandle, wait)
+import Phina (class LabeledScene, DisplayElement, DisplayScene, Label, SetupScene, addChild, addChildTo, addTween, call, color, getSize, newDisplayElement, newLabel, onPointStart, play, sec, setLoop, setProps, setText, stop, toSceneHandle, wait)
 import Test.Benchmark.Sprite.MyFace (newMyFace)
 import Type.Prelude (Proxy(..))
 
@@ -94,4 +94,4 @@ addLayer s = do
                                 , height: size.height
                                 , originX: 0.0
                                 , originY: 0.0}
-  element <$ addChild element s
+  addChildTo s element

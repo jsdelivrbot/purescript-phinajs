@@ -16,3 +16,7 @@ exports._addChild = function(child, parent) {
   parent.addChild(child);
   return parent;
 };
+
+exports._addChildTo = function(parent, child) {
+  return child.addChildTo(parent);
+};
