@@ -116,7 +116,7 @@ import Phina.Types.Monad.Builder (class MonadBuilder, build, eval, make, peek, u
 import Phina.Types.Numerical (class Numerical, number)
 import Phina.Types.Playable (class Playable, pause, play, resume, stop)
 import Phina.Types.Position (Position, getPosition, setPosition, setPosition')
-import Phina.Types.Position.Builder (getPositionB, setPositionB)
+import Phina.Types.Position.Builder (getPositionB, setPositionB, setPositionB')
 import Phina.Types.Property (class HasProperty, class Readable, class ReadableAttr, class ReadableProp, class ReadableRL, class Writable, class WritableAttr, class WritableProp, class WritableRL, Params, Prop, getProp, getProps, modifyProp, setParams, setProp, setProps, toParams, (.>), (:>))
 import Phina.Types.Property.Builder (getPropB, getPropsB, modifyPropB, setParamsB, setPropB, setPropsB)
 import Phina.Types.Row (class SubRow)
