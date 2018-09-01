@@ -3,6 +3,11 @@
 
 /* global phina */
 
+exports._newSpriteWithShape = function(shape) {
+  shape.flare('enterframe');
+  return phina.display.Sprite(shape.canvas);
+};
+
 exports._setAnimation = function(ss, sprite) {
   if (sprite.__frameAnimation) {
     sprite.__frameAnimation.remove();

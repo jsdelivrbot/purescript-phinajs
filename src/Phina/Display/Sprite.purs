@@ -4,6 +4,7 @@ module Phina.Display.Sprite
   ( Sprite
   , newSprite
   , newSprite'
+  , newSpriteWithShape
   , setFrameIndex
   , getFrameIndex
   , setAnimation
@@ -13,7 +14,7 @@ module Phina.Display.Sprite
 import Prelude
 
 import Effect (Effect)
-import Effect.Uncurried (EffectFn2, EffectFn3, runEffectFn2, runEffectFn3)
+import Effect.Uncurried (EffectFn1, EffectFn2, EffectFn3, runEffectFn1, runEffectFn2, runEffectFn3)
 import Prim.Row (class Union)
 import Type.Prelude (SProxy(..))
 
@@ -25,6 +26,7 @@ import Phina.App.Interactive (class Interactive)
 import Phina.Asset.AssetLoader (ImageAsset)
 import Phina.Asset.SpriteSheet (SpriteSheetAsset)
 import Phina.Display.DisplayElement (class IsDisplayElement, DisplayElementProps)
+import Phina.Display.Shape (class IsShape)
 import Phina.Types.Property (class HasProperty, class Writable, Params, Prop, getProp, setProp)
 import Phina.Unsafe (unsafeNew, unsafeSetProps)
 import Phina.Util.EventDispatcher (class EventDispatcher)
@@ -56,6 +58,9 @@ newSprite = unsafeNewSprite
 newSprite' ∷ ImageAsset → Params Sprite → Effect Sprite
 newSprite' = unsafeNewSprite
 
+newSpriteWithShape ∷ ∀ a. IsShape a ⇒ a → Effect Sprite
+newSpriteWithShape = runEffectFn1 _newSpriteWithShape
+
 setFrameIndex ∷ Int → Sprite → Effect Sprite
 setFrameIndex = setProp (SProxy ∷ SProxy "frameIndex")
 
@@ -74,6 +79,8 @@ unsafeNewSprite ∷ ∀ a. ImageAsset → a → Effect Sprite
 unsafeNewSprite image params = do
   sprite ← unsafeNew "display" "Sprite" image
   unsafeSetProps params sprite
+
+foreign import _newSpriteWithShape ∷ ∀ a. EffectFn1 a Sprite
 
 foreign import _setAnimation ∷ EffectFn2 SpriteSheetAsset Sprite Sprite
 
